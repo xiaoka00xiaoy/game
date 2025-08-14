@@ -53,3 +53,12 @@ Sub Split_ComplexText()
     
     Range("A1:B" & matches.Count) = arr
 End Sub
+
+
+Function RemoveHTML(text As String) As String
+    Dim regEx As Object
+    Set regEx = CreateObject("VBScript.RegExp")
+    regEx.Pattern = "<[^>]+>"   ' 匹配所有<...>标签
+    regEx.Global = True
+    RemoveHTML = regEx.Replace(text, "")
+End Function
